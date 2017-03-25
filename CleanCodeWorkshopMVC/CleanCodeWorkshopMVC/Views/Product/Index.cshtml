@@ -1,0 +1,31 @@
+﻿@model IEnumerable<CleanCodeWorkshopMVC.Models.ProductModel>
+
+@{
+    ViewBag.Title = "Products";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table" id="products">
+    <tr>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>@item.ProductName</td>
+            <td class="price">@item.Price</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+    <tr><td>Total:</td ><td id="total"></td><td></td></tr>
+</table>
+@Scripts.Render("~/bundles/products")
